@@ -9,9 +9,11 @@ services:
         - '3050:80'
   postgres:
     image: 'postgres:13-alpine'
+    environment:
+      - POSTGRES_PASSWORD=postgres_password
   redis:
     image: 'redis:latest'  
-  server:
+  api:
     build:
       dockerfile: Dockerfile.dev
       context: ./server
@@ -36,8 +38,10 @@ services:
   worker:
     build:
       dockerfile: Dockerfile.dev
-      context: ./worker
+      context: ./service
     volumes:
       - /app/node_modules
-      - ./worker:/app
-      
+      - ./service:/app
+    environment:
+    - REDIS_HOST=redis
+    - REDIS_PORT=6379 
