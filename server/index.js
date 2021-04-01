@@ -49,7 +49,7 @@ app.get('/values/current', (request, response) => {
     });
 });
 
-app.get('/values', async (request, response) => {
+app.post('/values', async (request, response) => {
     const index = request.body.index;
 
     if(parseInt(index) > 30){
