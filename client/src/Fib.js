@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class FibNumbers extends Component{
     state = {
         calculatedIndexes: [],
         values : {},
         index: ''
-    }
+    };
 
     componentDidMount(){
         this.fetchValues();
