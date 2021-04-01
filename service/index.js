@@ -18,7 +18,7 @@ function computeFibValue(value){
 }
 
 sub.on('message', (channel, message) => {
-    redisClient.hset('message', message, computeFibValue(parseInt(message)));
+    redisClient.hset('values', message, computeFibValue(parseInt(message)));
 });
 
 sub.subscribe('insert');
