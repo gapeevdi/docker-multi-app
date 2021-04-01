@@ -58,7 +58,7 @@ app.post('/values', async (request, response) => {
     }
 
     redisPublisher.publish('insert', index);
-    pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
+    pgClient.query('INSERT INTO Values(number) VALUES($1)', [index]);
 
     response.send({working : true});
 });
