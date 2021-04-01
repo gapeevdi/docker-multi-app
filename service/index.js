@@ -14,10 +14,10 @@ const sub = redisClient.duplicate();
 // so that it's not super important thing to use a loop and memoization
 function computeFibValue(value){
     if(value < 2) return 1;
-    return fibValue(value - 1) + fibValue(value - 2);
+    return computeFibValue(value - 1) + computeFibValue(value - 2);
 }
 
-sub.on('message', (cannel, message) => {
+sub.on('message', (channel, message) => {
     redisClient.hset('message', message, computeFibValue(parseInt(message)));
 });
 
