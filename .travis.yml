@@ -18,3 +18,15 @@ after_success:
   - docker push gapeevdi/multi-nginx
   - docker push gapeevdi/multi-server
   - docker push gapeevdi/multi-service
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: MultiDocker
+  env: Multidocker-env
+  bucket_name: elasticbeanstalk-us-east-2-140254542102
+  bucker_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
